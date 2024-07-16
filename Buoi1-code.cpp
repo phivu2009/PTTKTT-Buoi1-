@@ -23,7 +23,7 @@ void merge(int arr[], int left, int mid, int right) {
     for (int j = 0; j < n2; j++)
         R[j] = arr[mid + 1 + j];
 
-    cout << "G?p c�c m?ng: ";
+    cout << "Gộp các mảng: ";
     printArray(L, n1);
     cout << " ";
     printArray(R, n2);
@@ -31,14 +31,14 @@ void merge(int arr[], int left, int mid, int right) {
     
     int i = 0, j = 0, k = left;
     while (i < n1 && j < n2) {
-        cout << "So s�nh " << L[i] << " <= " << R[j] << endl;
+        cout << "So sánh " << L[i] << " <= " << R[j] << endl;
         if (L[i] <= R[j]) {
             arr[k] = L[i];
-            cout << "��ng -> �?t " << L[i] << " v�o v? tr� " << k << endl << endl;
+            cout << "Đúng -> Đặt " << L[i] << " vào vị trí " << k << endl << endl;
             i++;
         } else {
             arr[k] = R[j];
-            cout << "Sai -> �?t " << R[j] << " v�o v? tr� " << k << endl << endl;
+            cout << "Sai -> Đặt " << R[j] << " vào vị trí " << k << endl << endl;
             j++;
         }
         k++;
@@ -46,19 +46,19 @@ void merge(int arr[], int left, int mid, int right) {
 
     while (i < n1) {
         arr[k] = L[i];
-        cout << "Sao ch�p " << L[i] << " v�o v? tr� " << k << endl;
+        cout << "Sao chép " << L[i] << " vào vị trí " << k << endl;
         i++;
         k++;
     }
 
     while (j < n2) {
         arr[k] = R[j];
-        cout << "Sao ch�p " << R[j] << " v�o v? tr� " << k << endl;
+        cout << "Sao chép " << R[j] << " vào vị trí " << k << endl;
         j++;
         k++;
     }
 
-    cout << "Sau khi g?p: ";
+    cout << "Sau khi gộp: ";
     printArray(arr + left, right - left + 1);
     cout << endl << "-------------------------------" << endl;
     delete[] L;
@@ -88,22 +88,22 @@ int partition(int arr[], int low, int high) {
     int pivot = arr[high];
     int i = (low - 1);
 
-    cout << "Pivot (ph?n t? cu?i m?ng): " << pivot << endl;
+    cout << "Pivot (phần tử cuối mảng): " << pivot << endl;
 
     for (int j = low; j <= high - 1; j++) {
         bool isSwapping = arr[j] < pivot;
-        cout << "So s�nh " << arr[j] << " < " << pivot << ": " << (isSwapping ? "d�ng" : "sai") << endl;
+        cout << "So sánh " << arr[j] << " < " << pivot << ": " << (isSwapping ? "đúng" : "sai") << endl;
         if (isSwapping) {
             i++;
             swap(&arr[i], &arr[j]);
-            cout << "Ho�n d?i " << arr[i] << " v� " << arr[j] << endl << "Ta du?c: ";
+            cout << "Hoán đổi " << arr[i] << " và " << arr[j] << endl << "Ta được: ";
             printArray(arr, high + 1);
             cout << endl;
         }
     }
-    cout << endl << "Left pointer tr�ng v?i right pointer -> ";
+    cout << endl << "Left pointer trùng với right pointer -> ";
     swap(&arr[i + 1], &arr[high]);
-    cout << "Ho�n d?i " << arr[i + 1] << " v� " << arr[high] << endl << "Ta du?c: ";
+    cout << "Hoán đổi " << arr[i + 1] << " và " << arr[high] << endl << "Ta được: ";
     printArray(arr, high + 1);
     cout << endl << endl;
     
@@ -124,23 +124,23 @@ void quickSort(int arr[], int first, int last) {
 int binarySearch(int arr[], int l, int r, int x) {
     while (l <= r) {
         int m = l + (r - l) / 2;
-        cout << "Ch? s? gi?a: " << m << ", Ph?n t? gi?a: " << arr[m] << endl;
+        cout << "Chỉ số giữa: " << m << ", Phần tử giữa: " << arr[m] << endl;
 
         if (arr[m] == x) {
-            cout << "Ph?n t? t�m th?y ? ch? s? " << m << endl;
+            cout << "Phần tử tìm thấy ở chỉ số " << m << endl;
             return m;
         }
 
         if (arr[m] < x) {
-            cout << "Ph?n t? " << x << " l?n hon " << arr[m] << endl;
+            cout << "Phần tử " << x << " lớn hơn " << arr[m] << endl;
             l = m + 1;
         } else {
-            cout << "Ph?n t? " << x << " nh? hon " << arr[m] << endl;
+            cout << "Phần tử " << x << " nhỏ hơn " << arr[m] << endl;
             r = m - 1;
         }
     }
 
-    cout << "Ph?n t? kh�ng c� trong m?ng" << endl;
+    cout << "Phần tử không có trong mảng" << endl;
     return -1;
 }
 
@@ -166,12 +166,12 @@ string multiply(string num1, string num2) {
             carry = sum / 10;
             result[i + j + 1] = sum % 10;
 
-            cout << " = " << result[i + j + 1] << " (t?ng = " << sum << ", du = " << carry << ")" << endl;
+            cout << " = " << result[i + j + 1] << " (tổng = " << sum << ", dư = " << carry << ")" << endl;
         }
 
         result[i + n2] += carry;
 
-        cout << "K?t qu? sau khi c?ng ph?n du: ";
+        cout << "Kết quả sau khi cộng phần dư: ";
         bool leadingZero = true;
         for (int k = 0; k < result.size(); k++) {
             if (result[k] != 0) leadingZero = false;
@@ -193,45 +193,45 @@ string multiply(string num1, string num2) {
 
 int main() {
     // 1.
-    // int qArr[] = {10, 7, 8, 9, 1, 5, 23, 45, 16, 37, 3, 99, 22};
-    // int qArrSize = sizeof(qArr) / sizeof(qArr[0]);
+    int qArr[] = {10, 7, 8, 9, 1, 5, 23, 45, 16, 37, 3, 99, 22};
+    int qArrSize = sizeof(qArr) / sizeof(qArr[0]);
 
-    // cout << "M?ng ban d?u: ";
-    // printArray(qArr, qArrSize);
-    // cout << endl;
-    // cout << "-------------------------------" << endl << endl;
+    cout << "Mảng ban đầu: ";
+    printArray(qArr, qArrSize);
+    cout << endl;
+    cout << "-------------------------------" << endl << endl;
 
-    // quickSort(qArr, 0, qArrSize - 1);
+    quickSort(qArr, 0, qArrSize - 1);
 
-    // cout << "-------------------------------" << endl << endl;
-    // cout << "M?ng d� s?p x?p: ";
-    // printArray(qArr, qArrSize);
-    // cout << endl;
+    cout << "-------------------------------" << endl << endl;
+    cout << "Mảng đã sắp xếp: ";
+    printArray(qArr, qArrSize);
+    cout << endl;
     
     // 2.
-    // int mArr[] = {10, 7, 8, 9, 1, 5, 23, 45, 16, 37, 3, 99, 22};
-    // int mArrSize = sizeof(mArr) / sizeof(mArr[0]);
+    int mArr[] = {10, 7, 8, 9, 1, 5, 23, 45, 16, 37, 3, 99, 22};
+    int mArrSize = sizeof(mArr) / sizeof(mArr[0]);
 
-    // cout << "M?ng ban d?u: ";
-    // printArray(mArr, mArrSize);
-    // cout << endl << "-------------------------------" << endl;
+    cout << "Mảng ban đầu: ";
+    printArray(mArr, mArrSize);
+    cout << endl << "-------------------------------" << endl;
     
-    // mergeSort(mArr, 0, mArrSize - 1);
+    mergeSort(mArr, 0, mArrSize - 1);
 
-    // cout << "M?ng d� s?p x?p: ";
-    // printArray(mArr, mArrSize);
-    // cout << endl;
+    cout << "Mảng đã sắp xếp: ";
+    printArray(mArr, mArrSize);
+    cout << endl;
     
     
     // 3
-    // int bArr[] = {2, 3, 4, 10, 40};
-    // int nBiArr = sizeof(bArr) / sizeof(bArr[0]);
-    // int x = 5;
-    // cout << "M?ng: ";
-    // printArray(bArr, nBiArr);
-    // cout << endl;
+    int bArr[] = {2, 3, 4, 10, 40};
+    int nBiArr = sizeof(bArr) / sizeof(bArr[0]);
+    int x = 5;
+    cout << "Mảng: ";
+    printArray(bArr, nBiArr);
+    cout << endl;
     
-    // binarySearch(bArr, 0, nBiArr - 1, x);
+    binarySearch(bArr, 0, nBiArr - 1, x);
     
     //
     string str1 = "123";
@@ -246,8 +246,8 @@ int main() {
     if (str2.at(0) == '-')
         str2 = str2.substr(1);
 
-    cout << "Nh�n " << str1 << " v� " << str2 << endl;
-    cout << "K?t qu?: " << multiply(str1, str2) << endl;
+    cout << "Nhân " << str1 << " và " << str2 << endl;
+    cout << "Kết quả: " << multiply(str1, str2) << endl;
 
     return 0;
 }
